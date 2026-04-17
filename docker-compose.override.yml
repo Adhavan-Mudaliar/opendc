@@ -12,6 +12,12 @@ services:
       - "8080:8080"
     environment:
       SENTRY_ENVIRONMENT: "development"
+      QUARKUS_OIDC_ENABLED: "false"
+      QUARKUS_OIDC_TENANT_ENABLED: "false"
+      OPENDC_SECURITY_ENABLED: "false"
+      QUARKUS_HIBERNATE_ORM_DATABASE_GENERATION: "drop-and-create"
+      QUARKUS_FLYWAY_MIGRATE_AT_START: "false"
+      QUARKUS_OPENDC_UI_AUTH_DOMAIN: ""
 
   runner:
     build:
@@ -22,6 +28,7 @@ services:
         -Dlog4j2.rootLogger.level=DEBUG
         -Dlog4j2.logger.org.opendc.level=DEBUG
         -Dlog4j2.logger.org.opendc.web.client.level=TRACE
+    command: /opt/opendc-web-runner/bin/opendc-runner --no-auth
 
   postgres:
     ports:

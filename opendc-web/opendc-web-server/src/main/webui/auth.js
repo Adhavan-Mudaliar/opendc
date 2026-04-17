@@ -43,7 +43,7 @@ function useAnonymousAuth() {
  * Determine whether the auth domain is anonymous.
  */
 function isAnonymousDomain(config) {
-    return !config.domain || config.domain === '%%NEXT_PUBLIC_AUTH0_DOMAIN%%'
+    return true
 }
 
 /**
